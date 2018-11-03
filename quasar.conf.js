@@ -4,7 +4,7 @@ module.exports = function (ctx) {
   return {
     // app plugins (/src/plugins)
     plugins: [
-      'apollo'
+//      'apollo'
     ],
     css: [
       'app.styl'
@@ -29,7 +29,7 @@ module.exports = function (ctx) {
     },
     devServer: {
       // https: true,
-      // port: 8080,
+      port: 3001,
       open: true // opens browser window automatically
     },
     // framework: 'all' --- includes everything; for dev only!

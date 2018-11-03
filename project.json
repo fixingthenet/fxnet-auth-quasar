@@ -1,0 +1,10 @@
+{
+  "project": "fxnet-auth-quasar",
+    
+  "git": "github.com/fixingthenet/fxnet-auth-quasar",
+  "path": "fxnet-auth-quasar",
+  "docker": {
+    "repo": "fxnet",
+    "name": "fxnet-auth-quasar"
+  }
+}
