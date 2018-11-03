@@ -7,7 +7,7 @@
 
 <script>
 import Config from '../lib/config'
-const config = new Config({ok: "yes"})
+const config = new Config()
 
 export default {
   name: 'PageIndex',

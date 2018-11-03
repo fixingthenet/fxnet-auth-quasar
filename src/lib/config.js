@@ -1,7 +1,7 @@
 class Config {
     constructor(config) {
         if (config) {
-
+          
         } else {
             config={}
             document.querySelectorAll('meta').forEach((meta) => {

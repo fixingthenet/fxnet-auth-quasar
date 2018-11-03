@@ -17,8 +17,7 @@
         </q-btn>
 
         <q-toolbar-title>
-          Quasar App
-          <div slot="subtitle">Running on Quasar v{{ $q.version }}</div>
+          {{ appName }}
         </q-toolbar-title>
       </q-toolbar>
     </q-layout-header>
@@ -32,12 +31,16 @@
 
 <script>
 import { openURL } from 'quasar'
+import Config from '../lib/config'
+const config = new Config();
+console.log(config);
 
 export default {
   name: 'LayoutDefault',
   data () {
     return {
-      leftDrawerOpen: this.$q.platform.is.desktop
+      leftDrawerOpen: this.$q.platform.is.desktop,
+      appName: config.get('app_name')
     }
   },
   methods: {
