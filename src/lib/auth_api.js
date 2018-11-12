@@ -1,34 +1,29 @@
-import Axios from 'axios';
+//import Axios from 'axios';
 import Config from '../lib/config'
 const config = new Config()
-let store = null;
+import graphql from  'graphql.js'
+const API_URL = `${config.get('AUTH_URL')}graphql`;
 
-export default class BaseAPI {
-  constructor(apiUrl) {
-    this.axios = Axios.create({
-      baseURL: apiUrl,
-    });
+const authApi = graphql(API_URL, {
+  method: "POST", // POST by default.
+  asJSON: true,
+  alwaysAutodeclare: true,
+  headers: {
+    "Access-Token": "some-access-token"
+  },
+  fragments: {
+    // fragments, you don't need to say `fragment name`.
+//    auth: "on User { token }",
+    errors: "on InputError { base fields{ key errors} }"
   }
+})
 
-  static setStore(newStore) { store = newStore; }
+authApi.q={
+  login: authApi.mutate(`
+     sessionLogin(login: $login, password: $password) {
+        token errors {...errors}
+
+}`)
 }
 
-export const API_URL = `${config.get('AUTH_URL')}api`;
-
-class AuthApi extends BaseAPI {
-  constructor() {
-    super(API_URL);
-  }
-
-  session_login(login, password) {
-    return this.axios.post('session',{
-      login,
-      password
-    });
-  }
-}
-const authApi =  new AuthApi();
-
-export {
-  authApi
-}
+export default authApi;

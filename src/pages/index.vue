@@ -16,7 +16,7 @@
 
 <script>
 import Config from '../lib/config'
-import {authApi} from '../lib/auth_api'
+import authApi from '../lib/auth_api'
 
 const config = new Config()
 import {QInput,QField} from 'quasar'
@@ -50,11 +50,18 @@ export default {
       }
     },
     login() {
-      authApi.session_login(this.loginName, this.password).
-      then(result => {console.log("Result", result)
+      authApi.q.login({
+      login: this.loginName,
+      password: this.password}).
+      then(result => {
+              console.log("Result", result)
+              if (result.sessionLogin.errors) {
+                this.$q.notify("Error on login");
+              } else {
               this.$q.notify({
               message:"Logged in",
               type: "positive"});
+              }
               }
       ).
       catch(error => {
