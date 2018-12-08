@@ -11,7 +11,9 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "graphql.js": "^0.5.2"
+    "graphql.js": "^0.5.2",
+    "jsonwebtoken": "^8.4.0",
+    "moment": "^2.22.2"
   },
   "devDependencies": {
     "quasar-cli": "^0.17.20",

@@ -1,10 +1,13 @@
-
 export default [
   {
     path: '/',
     component: () => import('layouts/default'),
     children: [
-      { path: '', component: () => import('pages/index') }
+      { path: '', component: () => import('pages/index') },
+      { path: '/login',
+        component: () => import('pages/sessionLogin'),
+        meta: { public: true}
+      }
     ]
   },
 
