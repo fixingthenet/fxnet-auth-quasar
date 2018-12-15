@@ -19,6 +19,12 @@
         <q-toolbar-title>
           {{ appName }}
         </q-toolbar-title>
+
+      <q-btn
+        flat round
+        icon="exit_to_app"
+        @click="logout"
+      />
       </q-toolbar>
     </q-layout-header>
 
@@ -33,7 +39,8 @@
 import { openURL } from 'quasar'
 import Config from '../lib/config'
 const config = new Config();
-console.log(config);
+//console.log(config);
+import store from '../store'
 
 export default {
   name: 'LayoutDefault',
@@ -44,7 +51,12 @@ export default {
     }
   },
   methods: {
-    openURL
+    openURL,
+    logout() {
+      this.$store.commit('session/logout');
+      console.log("logout")
+      this.$router.push({path: "/login"});
+    }
   }
 }
 </script>

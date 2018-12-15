@@ -7,3 +7,9 @@ export function login (state,token) {
   LocalStorage.set('login_token',
                            token);
 }
+
+export function logout (state) {
+  console.log("action logout")
+  state.session = new Session(null)
+  LocalStorage.remove('login_token')
+}
