@@ -26,7 +26,7 @@ export default {
     }
   },
   computed: {
-    session() {return this.$router.session}
+    session() {return this.$store.state.session.session}
   }
 }
 </script>

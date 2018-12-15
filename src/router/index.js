@@ -1,8 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Session from '../lib/session'
 import routes from './routes'
-import {LocalStorage} from 'quasar'
 
 //import { LocalStorage } from 'quasar'
 Vue.use(VueRouter)
@@ -23,14 +21,12 @@ const Router = new VueRouter({
   routes
 })
 
+import store from '../store'
 Router.beforeEach((to,from,next) => {
   //console.log(from,to)
-  var token = LocalStorage.get.item('login_token');
-  var session = new Session(token)
+  var session = store.state.session.session;
 
-  Router.session=session
-
-  console.log("pubic route",to.meta.public)
+  console.log("public route",to.meta.public)
 
   if (session.isExpired() && !to.meta.public) {
     Router.push({ path: '/login',
