@@ -28,6 +28,24 @@
       </q-toolbar>
     </q-layout-header>
 
+  <q-layout-drawer side="left" v-model="leftDrawerOpen">
+    <q-list no-border link inset-separator>
+      <q-list-header>Session</q-list-header>
+      <q-item to="/">
+        <q-item-side icon="school" />
+        <q-item-main label="Session"/>
+      </q-item>
+      <q-item to="/security">
+        <q-item-side icon="record_voice_over" />
+        <q-item-main label="Security" sublabel="manage your credentials"/>
+      </q-item>
+      <q-item to="/contacts">
+        <q-item-side icon="chat" />
+        <q-item-main label="Contacts" sublabel="manage your communication" />
+      </q-item>
+    </q-list>
+  </q-layout-drawer>
+
 
     <q-page-container>
       <router-view />
