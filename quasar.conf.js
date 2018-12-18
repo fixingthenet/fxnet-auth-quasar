@@ -4,7 +4,7 @@ module.exports = function (ctx) {
   return {
     // app plugins (/src/plugins)
     plugins: [
-//      'apollo'
+      'vee-validate'
     ],
     css: [
       'app.styl'
