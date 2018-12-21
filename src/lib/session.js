@@ -25,7 +25,11 @@ class Session {
   isExpired() {
     return this.timeLeft() < 0
   }
-
+  
+  user() {
+    return this.decoded.user
+  }
+  
   toString() {
     return moment(this.expiresAt()).fromNow()
   }

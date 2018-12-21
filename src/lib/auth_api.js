@@ -20,7 +20,7 @@ const authApi = function() {
     fragments: {
       // fragments, you don't need to say `fragment name`.
       //    auth: "on User { token }",
-      errors: "on InputError { base fields{ key errors} }"
+      errors: "on InputError { base fields{ name errors} }"
     }
   })
 }
@@ -30,6 +30,16 @@ const q={
     var res=authApi().mutate(`
      sessionLogin(login: $login, password: $password) {
         token errors {...errors}}`)(vars)
+    return res
+  },
+  changePassword: function(vars) {
+    var res=authApi().mutate(`
+     changePassword(login: $login,
+                    currentPassword: $currentPassword,
+                    newPassword: $newPassword,
+                    newPasswordConfirmation: $newPasswordConfirmation
+) {
+        success errors {...errors}}`)(vars)
     return res
   }
 }

@@ -91,25 +91,27 @@ export default {
   },
   methods: {
     change() {
-      authApi.login({
-      login: this.loginName,
-      password: this.password}).
+      authApi.changePassword({
+      login: this.$store.state.session.session.user().login,
+      currentPassword: this.currentPassword,
+      newPassword: this.newPassword,
+      newPasswordConfirmation: this.newPasswordConfirmation,
+      }).
       then(result => {
               console.log("Result", result)
-              if (result.sessionLogin.errors) {
-                this.$q.notify("Error on login");
+              if (result.changePassword.errors) {
+                this.$q.notify("Error on changing password");
               } else {
-                this.$store.commit('session/login',result.sessionLogin.token);
                 this.$q.notify({
-                  message:"Logged in",
+                  message:"Password Changed",
                   type: "positive"});
                 }
-                this.redirectToNext()
+                this.$router.push({path: '/'})
               }
       ).
       catch(error => {
         console.log("Error", error);
-        this.$q.notify("Error on login");
+        this.$q.notify("Error on changing password");
       })
     }
   }
