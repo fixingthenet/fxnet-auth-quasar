@@ -7,6 +7,8 @@
       <q-card-separator />
       <q-card-main>
         Session expires {{session.toString()}}
+        <br/>
+        Logged in as '{{this.$store.state.session.session.user().login}}'
       </q-card-main>
     </q-card>
   </q-page>
