@@ -43,7 +43,12 @@
         <q-item-side icon="chat" />
         <q-item-main label="Contacts" sublabel="manage your communication" />
       </q-item>
-    </q-list>
+
+      <q-item to="/profiles">
+        <q-item-side icon="person" />
+        <q-item-main label="Profiles" sublabel="Manage your different identities" />
+      </q-item>
+</q-list>
   </q-layout-drawer>
 
 
