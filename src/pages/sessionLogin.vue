@@ -34,6 +34,14 @@ import Config from '../lib/config'
 import authApi from '../lib/auth_api'
 
 const config = new Config()
+
+var nextUrl= function(target,token) {
+   if (target && target.match(/^http.?:/)) {
+     window.location.href=target+"?token="+token
+   } else {
+     return target || '/'
+   }
+}
 import {QLayout, QLayoutHeader, QPageContainer,
         QInput,QField,
         QToolbar,QToolbarTitle,
@@ -61,11 +69,11 @@ export default {
     console.log("checking login")
     var session=store.state.session.session;
      if (session.isExpired()) {
-     console.log("expired")
+       console.log("expired")
        next()
      } else {
        console.log("still logged in")
-       next({path: to.query.next || '/'})
+       next({path: nextUrl(to.query.next,session.token)})
     }
   },
 
@@ -73,12 +81,6 @@ export default {
 
   },
   methods: {
-    nextUrl() {
-      return this.$route.query.next || '/'
-    },
-    redirectToNext() {
-      this.$router.push({path: this.nextUrl()})
-    },
     loginFieldError(){
       if (this.loginName.length < 1) {
        return true
@@ -108,7 +110,9 @@ export default {
                   message:"Logged in",
                   type: "positive"});
                 }
-                this.redirectToNext()
+                this.$router.push({path:
+                this.nextUrl(this.$route.query.next,
+                result.sessionLogin.token)})
               }
       ).
       catch(error => {
