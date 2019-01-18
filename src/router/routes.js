@@ -1,4 +1,8 @@
 export default [
+  { path: '/login',
+    component: () => import('pages/sessionLogin'),
+    meta: { public: true}
+  },
   {
     path: '/',
     component: () => import('layouts/default'),
@@ -7,10 +11,7 @@ export default [
       { path: '/security', component: () => import('pages/security') },
       { path: '/contacts', component: () => import('pages/contacts') },
       { path: '/profiles', component: () => import('pages/profiles') },
-      { path: '/login',
-        component: () => import('pages/sessionLogin'),
-        meta: { public: true}
-      }
+
     ]
   },
 
