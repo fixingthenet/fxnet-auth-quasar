@@ -95,13 +95,12 @@ export default {
       then(result => {
               console.log("Result", result)
               if (result.signup.errors) {
-                this.$q.notify("Error on signup");
+                this.$q.notify(`Error on signup: ${result.signup.errors.base}`);
               } else {
                 this.$q.notify({
                   message:"You signed up successfully",
                   type: "positive"});
                 }
-                this.$router.push({path: '/login'})
               }
       ).
       catch(error => {

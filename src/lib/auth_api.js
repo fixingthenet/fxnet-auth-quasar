@@ -47,7 +47,7 @@ const q={
      signup(login: $login,
             password: $password
 ) {
-        token errors {...errors}}`)(vars)
+        success  errors {...errors}}`)(vars)
     return res
   }
 }
