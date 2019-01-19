@@ -1,11 +1,19 @@
 export default [
-  { path: '/login',
-    component: () => import('pages/sessionLogin'),
-    meta: { public: true}
-  },
-  { path: '/signup',
-    component: () => import('pages/signup'),
-    meta: { public: true}
+  {
+    path: '/public',
+    component: () => import('layouts/public'),
+    children: [
+      { path: 'login',
+        alias: '/login',
+        component: () => import('pages/sessionLogin'),
+        meta: { public: true}
+      },
+      { path: 'signup',
+        alias: '/signup',
+        component: () => import('pages/signup'),
+        meta: { public: true}
+      },
+    ]
   },
   {
     path: '/',

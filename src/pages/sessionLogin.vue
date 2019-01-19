@@ -1,17 +1,4 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
-    <q-layout-header>
-<q-toolbar
-        color="primary"
-        :glossy="$q.theme === 'mat'"
-        :inverted="$q.theme === 'ios'"
-      >
-<q-toolbar-title>
-          {{ appName }}
-        </q-toolbar-title>
-</q-toolbar>
-    </q-layout-header>
-    <q-page-container>
   <q-page class="center">
   <q-field :error="loginFieldError()" error-label="Please enter your login">
       <q-input type="text" lower-case v-model="loginName" float-label="Login" autofocus/>
@@ -24,16 +11,11 @@
     <q-btn @click="login" :disable="loginFieldError() || passwordFieldError()" >Login</q-btn>
 
   </q-page>
-  </q-page-container>
-  </q-layout>
 </template>
 
 
 <script>
-import Config from '../lib/config'
 import authApi from '../lib/auth_api'
-
-const config = new Config()
 
 var nextUrl= function(target,token) {
    if (target && target.match(/^http.?:/)) {
@@ -42,27 +24,22 @@ var nextUrl= function(target,token) {
      return target || '/'
    }
 }
-import {QLayout, QLayoutHeader, QPageContainer,
-        QInput,QField,
-        QToolbar,QToolbarTitle,
+import {
+        QInput,
+        QField,
         } from 'quasar'
 import store from '../store'
+
 export default {
   name: 'PageIndex',
   components: {
   QInput,
   QField,
-  QLayout,
-  QLayoutHeader,
-  QToolbar,QToolbarTitle,
   },
   data() {
     return {
       loginName: '',
       password: '',
-      leftDrawerOpen: this.$q.platform.is.desktop,
-      appName: config.get('app_name')
-
     }
   },
   beforeRouteEnter(to,from,next) {
