@@ -3,6 +3,10 @@ export default [
     component: () => import('pages/sessionLogin'),
     meta: { public: true}
   },
+  { path: '/signup',
+    component: () => import('pages/signup'),
+    meta: { public: true}
+  },
   {
     path: '/',
     component: () => import('layouts/default'),

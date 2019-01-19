@@ -41,6 +41,14 @@ const q={
 ) {
         success errors {...errors}}`)(vars)
     return res
+  },
+  signup: function(vars) {
+    var res=authApi().mutate(`
+     signup(login: $login,
+            password: $password
+) {
+        token errors {...errors}}`)(vars)
+    return res
   }
 }
 //, {}, }
