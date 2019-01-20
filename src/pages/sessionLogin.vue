@@ -88,7 +88,7 @@ export default {
                   type: "positive"});
                 }
                 this.$router.push({path:
-                this.nextUrl(this.$route.query.next,
+                nextUrl(this.$route.query.next,
                 result.sessionLogin.token)})
               }
       ).

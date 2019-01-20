@@ -39,7 +39,7 @@
         <q-item-side icon="record_voice_over" />
         <q-item-main label="Security" sublabel="manage your credentials"/>
       </q-item>
-      <q-item to="/contacts">
+    <!--  <q-item to="/contacts">
         <q-item-side icon="chat" />
         <q-item-main label="Contacts" sublabel="manage your communication" />
       </q-item>
@@ -47,7 +47,7 @@
       <q-item to="/profiles">
         <q-item-side icon="person" />
         <q-item-main label="Profiles" sublabel="Manage your different identities" />
-      </q-item>
+      </q-item>-->
 </q-list>
   </q-layout-drawer>
 
