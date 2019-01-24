@@ -2,7 +2,7 @@
 import Config from '../lib/config'
 const config = new Config()
 import graphql from  'graphql.js'
-const API_URL = `${config.get('AUTH_URL')}graphql`;
+const API_API_URL = `${config.get('AUTH_API_URL')}graphql`;
 import {LocalStorage} from 'quasar'
 
 
@@ -10,7 +10,7 @@ import {LocalStorage} from 'quasar'
 const authApi = function() {
   var token=LocalStorage.get.item('login_token');
   console.log("token",token)
-  return graphql(API_URL, {
+  return graphql(API_API_URL, {
     method: "POST", // POST by default.
     asJSON: true,
     alwaysAutodeclare: true,

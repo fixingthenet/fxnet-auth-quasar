@@ -7,6 +7,12 @@ module.exports = function (ctx) {
       'vee-validate',
       'fxnet',
     ],
+    htmlVariables: { 
+      auth_api_url: process.env.AUTH_API_URL,
+      auth_ui_url: process.env.AUTH_UI_URL,
+      productName: process.env.APP_NAME,
+      productDescription: process.env.APP_DESCRIPTION,
+    },
     css: [
       'app.styl'
     ],
