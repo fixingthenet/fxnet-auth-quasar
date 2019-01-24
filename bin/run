@@ -13,7 +13,10 @@ if [ $mode == "dev" ]; then
   #yarn run --offline dev
   exec quasar dev mat
 else
-  #envsubst < "/usr/share/nginx/html/index.env.html" | tee > "/usr/share/nginx/html/index.html" &&
-  #nginx -g "daemon off;"
-  echo "not yet"
+  cp -R ./dist/spa-mat/* /usr/share/nginx/html
+  if [ ! -f /usr/share/nginx/html/index.env.html ]; then
+    cp /usr/share/nginx/html/index.html /usr/share/nginx/html/index.env.html
+  fi
+  envsubst < "/usr/share/nginx/html/index.env.html" | tee > "/usr/share/nginx/html/index.html" &&
+  nginx -g "daemon off;"
 fi

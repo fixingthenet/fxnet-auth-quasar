@@ -8,10 +8,10 @@ module.exports = function (ctx) {
       'fxnet',
     ],
     htmlVariables: { 
-      auth_api_url: process.env.AUTH_API_URL,
-      auth_ui_url: process.env.AUTH_UI_URL,
-      productName: process.env.APP_NAME,
-      productDescription: process.env.APP_DESCRIPTION,
+      auth_api_url: process.env.AUTH_API_URL || '${AUTH_API_URL}',
+      auth_ui_url: process.env.AUTH_UI_URL || '${AUTH_UI_URL}',
+      productName: process.env.APP_NAME || '${APP_NAME}',
+      productDescription: process.env.APP_DESCRIPTION || '${APP_DESCRIPTION}',
     },
     css: [
       'app.styl'
